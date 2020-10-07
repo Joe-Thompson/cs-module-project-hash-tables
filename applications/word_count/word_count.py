@@ -1,6 +1,11 @@
 def word_count(s):
     # Your code here
-
+    cache = {}
+    special_chars = '" : ; , . - + = / \ | [ ] { } ( ) * ^ &'.split()
+    s2 = ''.join(c.lower() for c in s if not c in special_chars)
+    for word in s2.split():
+        cache[word] = cache[word] + 1 if word in cache else 1
+    return cache
 
 
 if __name__ == "__main__":
